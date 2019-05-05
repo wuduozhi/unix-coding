@@ -2,7 +2,7 @@
 
 int main(int argc,char **argv)
 {
-	int sockfd,n;
+	int sockfd,n,counter = 0;
 	char recvline[MAXLINE+1];
 	struct sockaddr_in servaddr;
 
@@ -26,6 +26,7 @@ int main(int argc,char **argv)
 
 	while((n = read(sockfd,recvline,MAXLINE)) > 0){
 		recvline[n] = 0;
+		counter ++;
 		if(fputs(recvline,stdout) == EOF){
 			err_sys("fputs error");
 		}
@@ -34,6 +35,8 @@ int main(int argc,char **argv)
 	if(n < 0){
 		err_sys("read error");
 	}
-	
+
+	printf("counter = %d\n", counter);
+
 	exit(0);
 }
