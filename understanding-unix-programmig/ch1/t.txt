@@ -1,0 +1,53 @@
+sleep：添加时延
+sleep(n)将当前的进程挂起n秒或者在此期间被一个不能忽略的信号的到达所唤醒
+sleep是如何工作的
+系统中的每个进程都有一个私有的闹钟（alarm clock）。这个闹钟很像一个计时器，可以设置在一定秒数后闹铃。时间一到，时钟就发送一个信号SIGALRM到进程。除非SIGALRM设置了处理函数，否则信号将杀死这个进程。sleep函数由以下三个步骤组成：
+为SIGALRM设置一个处理函数
+调用alarm（num_seconds）
+调用pause。
+系统调用pause挂起进程直到信号到达。任何信号都可以唤醒进程，而非仅仅等待SIGALRM。将以上想法总结为以下代码：
+ 
+
+ 1 #include <stdio.h>
+ 2 #include <stdlib.h>
+ 3 #include <signal.h>
+ 4 
+ 5 void wakeup(int signum);
+ 6 
+ 7 int main()
+ 8 {
+ 9     printf("About to sleep for 4 seconds.\n" );
+10     signal(SIGALRM , wakeup );
+11     alarm(4);
+12     pause();
+13     printf("Morning so soon ? \n" );
+14 }
+15 
+16 void wakeup(int signum)
+17 {
+18     printf("Alarm received from kernel.\n");
+19 }
+sleep的细节：
+返回值：
+-1：出错
+old ： 计时器剩余的时间
+alarm设置本进程的计时器到seconds秒后激发信号SIGALRM。当设定的时间过去之后，内核发送SIGALRM到这个进程。如果计时器已经被设置，alarm返回剩余的秒数。调用alarm(0)意味着关闭闹钟，这一点值得注意。
+pause细节：
+pause挂起一个进程直到一个信号到达。如果调用进程被这个信号终止，pause没有返回。如果调用进程用一个处理函数捕获，则在控制从处理函数处返回后pause返回。这种情况下，errno被设置为EINTR。
+计时器的另一个用途：
+在将来的某个时刻发生的动作同时做一些其他事情。调度一个将要发生的动作很简单，通过alarm来设置计时器，然后继续做别的事情。当计时器计到0，处理函数被调用。
+Unix很早就有sleep和alarm，提供的计时精度为秒。后来一个更强大和使用广泛的计时系统被引用。新的计时系统使用“间隔计时器”的概念，精度更高。
+每个进程都有3个独立的计时器，而不是原来的一个。
+ITIMER_REAL，真实时间——SIGALRM
+ITIMER_VIRTUAL，进程时间：用户时间——SIGVTALRM
+ITIMER_PROF，实用时间：用户时间+系统时间——SIGPROF
+每个计时器都有两个设置：初始间隔和重复间隔设置。
+初始间隔：一次延时
+重复间隔：延时重复
+举例：医生给你一些药，告诉你：过一小时吃第一粒，然后每隔4小时吃一粒。
+新的系统还支持alarm和sleep。
+--------------------- 
+作者：小耗子在南京 
+来源：CSDN 
+原文：https://blog.csdn.net/donghaoascend/article/details/52330805 
+版权声明：本文为博主原创文章，转载请附上博文链接！
