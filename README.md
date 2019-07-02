@@ -24,10 +24,10 @@
 
 更详细的介绍：[Linux 高性能服务器编程](<https://github.com/wuduozhi/unix-coding/wiki/Linux-%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B>)
 
-## [UNIX 网络编程 卷1](https://book.douban.com/subject/4859464/)
+## [UNIX环境高级编程](<https://book.douban.com/subject/1788421/>)
 
 待读...
 
-## [UNIX环境高级编程](<https://book.douban.com/subject/1788421/>)
+## [UNIX 网络编程 卷1](https://book.douban.com/subject/4859464/)
 
 待读...
