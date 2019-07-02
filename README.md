@@ -16,16 +16,18 @@
 
 这本书一个很好的特点 `源码丰富`，光看源码就能学习到很多东西。这本书与其他书有很大的不同点：不死板的教原理，而是通过图片与代码的形式，带读者动手自己编程实现一些常用的 Linux 命令，如 `ls`,`pwd`,`who`,`cp`...这些基本的命令的实现，会涉及到操作系统的方方面面，文件系统、内存管理、进程、进程通信、输入输出设备、网络等。
 
-可以说，看完这本书，把书中的例子实现一遍，对操作系统的理解会进一步加深的，对一些常用的 Linux 命令，更是知其然，更知其所以然。
+可以说，看完这本书，把书中的例子实现一遍，对操作系统的理解会进一步加深的，对一些常用的 Linux 命令，更是知其然，更知其所以然，完成 `使用 Linux 命令` 到 `知道 Linux 命令的实现` 的跃进。
 
 ## [Linux 高性能服务器编程](https://book.douban.com/subject/24722611/)
 
+这本书的特点也是 `源码丰富`，主要是网络编程相关的东西。这本书不会太着重讲概念，不像《 UNIX 网络编程 》那样讲的那么细，带你入门，了解 socket 编程相关的方方面面，如 `I/O 复用`,`信号`,`定时器`,`多进程`,`多线程`,`进程池`，可以把这本书当做学习 《 UNIX 网络编程 》这套神书的前奏吧。
+
+更详细的介绍：[Linux 高性能服务器编程](<https://github.com/wuduozhi/unix-coding/wiki/Linux-%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B>)
+
 ## [UNIX 网络编程 卷1](https://book.douban.com/subject/4859464/)
 
-编译时必须加上静态链接库：-l 参数加上 libunp.a  去掉lib和后面的.a。最后得到参数-lunp
+待读...
 
-`gcc daytimetcpcli.c -o daytimetcpcli -l unp`
+# [UNIX环境高级编程](<https://book.douban.com/subject/1788421/>)
 
-## APUE 源码编译
-
-http://www.voidcn.com/article/p-vpolyqli-bmp.html
+待读...
