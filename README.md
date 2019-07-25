@@ -31,3 +31,8 @@
 ## [UNIX 网络编程 卷1](https://book.douban.com/subject/4859464/)
 
 待读...
+
+
+## Refer
+
+* [IO多路复用：select、poll、epoll示例](https://blog.csdn.net/lisonglisonglisong/article/details/51328062)
